@@ -7,6 +7,8 @@ on:
 
 jobs:
   build:
+    permissions:
+      contents: write  # Required to push changes to the repository
     runs-on: ubuntu-latest  # The runner to use
 
     steps:
@@ -20,7 +22,7 @@ jobs:
 
       # Push the changes to the output branch
       - name: Push changes
-        uses: ad-m/github-push-action@master  # GitHub Push Action
+        uses: ad-m/github-push-action@v0.6.0  # Use stable version of GitHub Push Action
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}  # Use the secret token here
           branch: output  # The branch to push to
