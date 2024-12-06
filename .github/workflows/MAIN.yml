@@ -1,34 +1,42 @@
-name: Generate snake animation
+name: Generate Snake Animation
 
 on:
-  schedule: # execute every 12 hours
-    - cron: "* */12 * * *"
-
-  workflow_dispatch:
-
+  schedule:
+    - cron: "* */12 * * *"  # Run every 12 hours
+  workflow_dispatch:  # Trigger manually
   push:
     branches:
-    - master
+      - master  # Trigger on pushes to master
 
 jobs:
   generate:
     permissions:
-      contents: write
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
+      contents: write  # Necessary permission to push changes
+    runs-on: ubuntu-latest  # Runner environment
+    timeout-minutes: 5  # Timeout for the job
 
     steps:
-      - name: generate snake.svg
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Step 2: Generate snake.svg
+      - name: Generate snake.svg
         uses: Platane/snk/svg-only@v3
         with:
-          github_user_name: ${{ github.lamin-tamang }}
-          outputs: dist/snake.svg?palette=github-dark
+          github_user_name: ${{ github.actor }}  # Use the GitHub actor to fetch the correct username
+          
+      # Step 3: Ensure the dist directory and the generated file exist
+      - name: Check dist directory and file
+        run: |
+          ls -R dist  # List contents of the dist directory
+          if test -f dist/snake.svg; then echo "snake.svg exists"; else echo "snake.svg does not exist"; exit 1; fi
 
-
-      - name: push snake.svg to the output branch
+      # Step 4: Push the generated SVG to the output branch
+      - name: Push snake.svg to the output branch
         uses: crazy-max/ghaction-github-pages@v3.1.0
         with:
-          target_branch: output
-          build_dir: dist
+          target_branch: output  # Branch to push to
+          build_dir: dist  # Directory containing the generated file
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use the GitHub token for authentication
