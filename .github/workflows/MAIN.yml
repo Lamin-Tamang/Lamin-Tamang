@@ -28,16 +28,20 @@ jobs:
           github_user_name: lamin-tamang
           svg_out_path: dist/github-snake.svg
 
-      # Shows the status of the repository (useful for debugging).
-      - run: git status
+      # Verify that the SVG file was created
+      - name: Check SVG file existence
+        run: |
+          ls dist
+          cat dist/github-snake.svg || echo "SVG file not found"
 
-      # Pushes changes to the repository (this should be the "output" branch).
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: output  # Make sure 'output' branch exists
-          force: true
+      # Commit and push the changes to the output branch
+      - name: Commit and push changes to the output branch
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add dist/github-snake.svg
+          git commit -m "Update snake SVG"
+          git push origin HEAD:output --force
 
       # Publishes the generated snake graphics to GitHub Pages.
       - uses: crazy-max/ghaction-github-pages@v2.1.3
