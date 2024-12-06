@@ -1,49 +1,34 @@
-name: Generate Snake
+name: Generate snake animation
 
 on:
-  schedule:
-    - cron: "0 */6 * * *"  # This runs the workflow every 6 hours
-  workflow_dispatch:  # This allows manual triggers
+  schedule: # execute every 12 hours
+    - cron: "* */12 * * *"
+
+  workflow_dispatch:
+
+  push:
+    branches:
+    - master
 
 jobs:
-  build:
+  generate:
     permissions:
-      contents: write  # Required to push changes to the repository
-    runs-on: ubuntu-latest  # The runner to use
+      contents: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
 
     steps:
-      # Step 1: Checkout the repository
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      # Step 2: Generate the snake SVG (no GIF here)
-      - name: Generate the snake SVG (no GIF here)
+      - name: generate snake.svg
         uses: Platane/snk/svg-only@v3
         with:
-          github_user_name: lamin-tamang
+          github_user_name: ${{ github.lamin-tamang }}
+          outputs: dist/snake.svg?palette=github-dark
 
-      # Step 3: Verify the dist folder and SVG file
-      - name: Check contents of dist directory
-        run: |
-          ls -R dist  # List files recursively in dist folder to check its content
-          # Ensure the SVG file exists in the expected location
-          if test -f dist/github-snake.svg; then echo "File exists"; else echo "File does not exist"; exit 1; fi
 
-      # Step 4: Push the changes to the output branch if files exist
-      - name: Push changes to the output branch
-        if: success()  # Only run this step if the previous steps succeed
-        uses: ad-m/github-push-action@v0.6.0  # Use stable version of GitHub Push Action
+      - name: push snake.svg to the output branch
+        uses: crazy-max/ghaction-github-pages@v3.1.0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}  # Use the secret token here
-          branch: output  # The branch to push to
-          force: true  # Force push (be careful with this, it can overwrite changes)
-
-      # Step 5: Optionally, you can add additional steps like publishing the output to GitHub Pages
-      - name: Deploy to GitHub Pages
-        if: success()  # Only run this step if the previous steps succeed
-        uses: crazy-max/ghaction-github-pages@v2.1.3
-        with:
-          target_branch: output  # Specify the target branch
-          build_dir: dist  # Path to the directory containing the output
+          target_branch: output
+          build_dir: dist
         env:
-          MY_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Make sure token is available
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
