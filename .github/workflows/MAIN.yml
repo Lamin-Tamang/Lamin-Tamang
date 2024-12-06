@@ -20,7 +20,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Step 2: Generate snake.svg
+      # Step 2: Generate snake.svg (no extra parameters, just the basics)
       - name: Generate snake.svg
         uses: Platane/snk/svg-only@v3
         with:
