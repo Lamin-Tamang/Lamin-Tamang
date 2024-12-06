@@ -20,9 +20,10 @@ jobs:
         uses: Platane/snk/svg-only@v3
         with:
           github_user_name: lamin-tamang
-          svg_out_path: dist/github-snake.svg  # Where to save the SVG output
+        outputs: |
+          dist/github-snake.svg  # The output file location
 
-      # Step 3: Verify that the dist folder exists and contains the generated SVG file
+      # Step 3: Verify that the dist folder and file exist
       - name: Verify the dist folder and SVG file
         run: |
           ls -R dist  # List files recursively in dist folder to check its content
