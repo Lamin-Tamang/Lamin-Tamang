@@ -13,7 +13,8 @@ jobs:
 
     steps:
       # Step 1: Checkout the repository
-      - uses: actions/checkout@v2  # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       # Step 2: Generate the snake SVG (no GIF here)
       - name: Generate the snake SVG (no GIF here)
@@ -21,11 +22,12 @@ jobs:
         with:
           github_user_name: lamin-tamang
 
-      # Step 3: Verify that the dist folder and file exist
-      - name: Verify the dist folder and SVG file
+      # Step 3: Verify the dist folder and SVG file
+      - name: Check contents of dist directory
         run: |
           ls -R dist  # List files recursively in dist folder to check its content
-          test -f dist/github-snake.svg  # Check if the SVG file exists
+          # Ensure the SVG file exists in the expected location
+          if test -f dist/github-snake.svg; then echo "File exists"; else echo "File does not exist"; exit 1; fi
 
       # Step 4: Push the changes to the output branch if files exist
       - name: Push changes to the output branch
