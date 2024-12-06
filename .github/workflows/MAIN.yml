@@ -20,6 +20,12 @@ jobs:
           github_user_name: lamin-tamang
           svg_out_path: dist/github-snake.svg  # Where to save the SVG output
 
+      # Verify that the SVG file was generated
+      - name: Verify the generated SVG file
+        run: |
+          ls -l dist  # List files in the dist directory
+          test -f dist/github-snake.svg  # Check if the SVG file exists
+
       # Push the changes to the output branch
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0  # Use stable version of GitHub Push Action
