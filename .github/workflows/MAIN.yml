@@ -18,11 +18,14 @@ jobs:
       # Checks out the repository under $GITHUB_WORKSPACE, so your job can access it.
       - uses: actions/checkout@v2
 
-      # Generates the snake SVG (no GIF here, if you want to keep only SVG output)
+      # Creates the 'dist' folder to store output if it doesn't exist.
+      - name: Create dist directory
+        run: mkdir -p dist
+
+      # Generates the snake SVG
       - uses: Platane/snk/svg-only@v3
         with:
           github_user_name: lamin-tamang
-          # Defines output file path
           svg_out_path: dist/github-snake.svg
 
       # Shows the status of the repository (useful for debugging).
@@ -33,13 +36,12 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: output  # Change this from 'master' to 'output'
+          branch: output  # Make sure 'output' branch exists
           force: true
 
       # Publishes the generated snake graphics to GitHub Pages.
       - uses: crazy-max/ghaction-github-pages@v2.1.3
         with:
-          # The branch where the output files will be stored.
           target_branch: output
           build_dir: dist
         env:
