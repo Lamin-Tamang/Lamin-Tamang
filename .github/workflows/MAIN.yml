@@ -12,30 +12,35 @@ jobs:
     runs-on: ubuntu-latest  # The runner to use
 
     steps:
+      # Step 1: Checkout the repository
       - uses: actions/checkout@v2  # Checkout the repository
 
+      # Step 2: Generate the snake SVG (no GIF here)
       - name: Generate the snake SVG (no GIF here)
         uses: Platane/snk/svg-only@v3
         with:
           github_user_name: lamin-tamang
           svg_out_path: dist/github-snake.svg  # Where to save the SVG output
 
-      # Verify that the SVG file was generated
-      - name: Verify the generated SVG file
+      # Step 3: Verify that the dist folder exists and contains the generated SVG file
+      - name: Verify the dist folder and SVG file
         run: |
-          ls -l dist  # List files in the dist directory
+          ls -R dist  # List files recursively in dist folder to check its content
           test -f dist/github-snake.svg  # Check if the SVG file exists
 
-      # Push the changes to the output branch
-      - name: Push changes
+      # Step 4: Push the changes to the output branch if files exist
+      - name: Push changes to the output branch
+        if: success()  # Only run this step if the previous steps succeed
         uses: ad-m/github-push-action@v0.6.0  # Use stable version of GitHub Push Action
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}  # Use the secret token here
           branch: output  # The branch to push to
           force: true  # Force push (be careful with this, it can overwrite changes)
 
-      # Optionally, you can add additional steps like publishing the output to GitHub Pages
-      - uses: crazy-max/ghaction-github-pages@v2.1.3
+      # Step 5: Optionally, you can add additional steps like publishing the output to GitHub Pages
+      - name: Deploy to GitHub Pages
+        if: success()  # Only run this step if the previous steps succeed
+        uses: crazy-max/ghaction-github-pages@v2.1.3
         with:
           target_branch: output  # Specify the target branch
           build_dir: dist  # Path to the directory containing the output
