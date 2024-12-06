@@ -25,12 +25,18 @@ jobs:
         uses: Platane/snk/svg-only@v3
         with:
           github_user_name: ${{ github.actor }}  # Use the GitHub actor to fetch the correct username
-          
-      # Step 3: Ensure the dist directory and the generated file exist
+
+      # Step 3: Check if dist directory and generated file exist
       - name: Check dist directory and file
         run: |
+          echo "Checking the contents of the dist directory:"
           ls -R dist  # List contents of the dist directory
-          if test -f dist/snake.svg; then echo "snake.svg exists"; else echo "snake.svg does not exist"; exit 1; fi
+          if test -f dist/snake.svg; then 
+            echo "snake.svg exists"; 
+          else 
+            echo "snake.svg does not exist"; 
+            exit 1; 
+          fi
 
       # Step 4: Push the generated SVG to the output branch
       - name: Push snake.svg to the output branch
