@@ -23,16 +23,19 @@ jobs:
         run: mkdir -p dist
 
       # Generates the snake SVG
-      - uses: Platane/snk/svg-only@v3
+      - uses: Platane/snk@v1  # Use the stable v1 version
         with:
           github_user_name: lamin-tamang
           svg_out_path: dist/github-snake.svg
 
-      # Verify that the SVG file was created
+      # List contents of the dist folder to verify the SVG is generated
+      - name: List contents of dist folder
+        run: ls -alh dist
+
+      # Verify the SVG file exists
       - name: Check SVG file existence
         run: |
-          ls dist
-          cat dist/github-snake.svg || echo "SVG file not found"
+          if [ -f dist/github-snake.svg ]; then echo "SVG file exists"; else echo "SVG file not found"; exit 1; fi
 
       # Commit and push the changes to the output branch
       - name: Commit and push changes to the output branch
