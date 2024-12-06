@@ -18,12 +18,12 @@ jobs:
       # Checks out the repository under $GITHUB_WORKSPACE, so your job can access it.
       - uses: actions/checkout@v2
 
-      # Generates the snake GIF and SVG.
-        - uses: Platane/snk/svg-only@v3
-  with:
-    github_user_name: lamin-tamang
-    outputs: |
-      dist/github-snake.svg
+      # Generates the snake SVG (no GIF here, if you want to keep only SVG output)
+      - uses: Platane/snk/svg-only@v3
+        with:
+          github_user_name: lamin-tamang
+          # Defines output file path
+          svg_out_path: dist/github-snake.svg
 
       # Shows the status of the repository (useful for debugging).
       - run: git status
