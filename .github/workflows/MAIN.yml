@@ -19,13 +19,11 @@ jobs:
       - uses: actions/checkout@v2
 
       # Generates the snake GIF and SVG.
-      - uses: Platane/snk@master
-        id: snake-gif
-        with:
-          github_user_name: lamin-tamang
-          # Outputs files to the "dist" directory and uses a separate branch called "output".
-          gif_out_path: dist/github-contribution-grid-snake.gif
-          svg_out_path: dist/github-contribution-grid-snake.svg
+        - uses: Platane/snk/svg-only@v3
+  with:
+    github_user_name: ${{ lmin-tamang }}
+    outputs: |
+      dist/github-snake.svg
 
       # Shows the status of the repository (useful for debugging).
       - run: git status
