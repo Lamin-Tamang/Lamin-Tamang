@@ -30,12 +30,12 @@ jobs:
       # Shows the status of the repository (useful for debugging).
       - run: git status
 
-      # Pushes changes to the repository.
+      # Pushes changes to the repository (this should be the "output" branch).
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: master
+          branch: output  # Change this from 'master' to 'output'
           force: true
 
       # Publishes the generated snake graphics to GitHub Pages.
