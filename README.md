@@ -2,7 +2,7 @@
 <h1 align="center">Hola 🌟, I'm Lamin Tamang</h1>
 <h3 align="center">An innovative Software Engineer from Nepal, blending creativity and precision to build solutions that inspire and transform.</h3>
 
-<img align="right" alt="coding" width="400" src="https://github.com/user-attachments/assets/140938a6-2aec-46cd-a611-0ab7a2fabbb8">
+<img align="right" alt="coding" width="400" src="https://i.pinimg.com/originals/25/21/6a/25216a1e57de1b6a39b8d5d3cf36f36e.gif">
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=lamin-tamang&label=Profile%20views&color=0e75b6&style=flat" alt="lamin-tamang" /> </p>
 
