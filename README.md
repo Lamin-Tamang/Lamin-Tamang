@@ -8,9 +8,11 @@
 
 - 🔭 I’m currently working on **ClearPath: AI-Driven Route Optimization to Beat Traffic**
 
-- 🌱 Currently learning **Python for Machine Learning**
+- 🌱 Currently focusing on **AI and Machine Learning**
 
 - 📫 How to reach me **lamintamang945@gmail.com**
+
+- 🌟 Fun fact **I am a foodieee**
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
