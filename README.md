@@ -4,13 +4,14 @@
 
 <img align="right" alt="coding" width="400" src="https://i.pinimg.com/originals/25/21/6a/25216a1e57de1b6a39b8d5d3cf36f36e.gif">
 
-<p align="left"> <img src="https://komarev.com/ghpvc/?username=lamin-tamang&label=Profile%20views&color=0e75b6&style=flat" alt="lamin-tamang" /> </p>
 
-- 🔭 I’m currently working on **ClearPath: AI-Driven Route Optimization to Beat Traffic**
+- 🔭 I’m currently working on **Automatic Nepali License Plate Recognition with OCR engine**
 
 - 🌱 Currently focusing on **AI and Machine Learning**
 
 - 📫 How to reach me **lamintamang945@gmail.com**
+
+-  ⚙️ Check out my fun website **lamintamang.com.np**
 
 - 🌟 Fun fact **I am a foodieee**
 
