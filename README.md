@@ -11,8 +11,8 @@
 
 ### About Me
 - Working on Workalaya R. & D. Pvt. Ltd. 
-- Focused on Artificial Intelligence and Machine Learning  
-- Portfolio: lamintamang.com.np  
+- Focused on Artificial Intelligence and Machine Learning
+- Portfolio: https://lamintamang.com.np/
 - Email: lamintamang945@gmail.com  
 - Personal note: A foodiee, Interested in exploring new places, Loves physical activities
 
@@ -20,19 +20,15 @@
 
 ### Connect Here
 <p align="center">
-<a href="https://linkedin.com/in/lamin tamang" target="_blank">
+<a href="https://www.linkedin.com/in/lamin-tamang/" target="_blank">
   <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/>
 </a>
-<a href="https://kaggle.com/lamin tamang" target="_blank">
+<a href="https://www.kaggle.com/lamintamang" target="_blank">
   <img src="https://img.shields.io/badge/Kaggle-20BEFF?style=for-the-badge&logo=kaggle&logoColor=white"/>
 </a>
-<a href="https://fb.com/lamin tamang" target="_blank">
-  <img src="https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white"/>
+<a href="mailto:lamintamang945@gmail.com">
+  <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>
 </a>
-<a href="https://instagram.com/_vanilla19" target="_blank">
-  <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white"/>
-</a>
-</p>
 
 ---
 
